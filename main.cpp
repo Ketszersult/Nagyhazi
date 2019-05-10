@@ -6,10 +6,6 @@
 using namespace std;
 std::vector<Shape*> shapes;
 
-bool insert(char* buffer, Shape* object, Screen& display){
-    object->draw(buffer, display);
-}
-
 
 int main()
 {
