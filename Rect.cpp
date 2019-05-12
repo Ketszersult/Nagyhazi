@@ -2,7 +2,7 @@
 
 enum shape tr = R;
 
-Rect::Rect(int x, int y, int a, int b, char c) : a(a), b(b)
+Rect::Rect(int x, int y, int a, int b, enum colors c) : a(a), b(b)
 {
     color = c;
     type=tr;
@@ -26,4 +26,10 @@ bool Rect::draw(char *buffer, Screen& display) {
     cout << "kesz" << endl;
     return true;
 }
+
+ostream &Rect::operator<<(ostream &os) {
+    cout << "Szin: " << this->color << "Bal felso sarok:" << this->u << "," << this->v << "a: " << this->a << "b: " << this->b << endl;
+    return os;
+}
+
 

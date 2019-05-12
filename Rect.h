@@ -9,9 +9,9 @@ private:
     int a;
     int b;
 public:
-    Rect(int x, int y, int a, int b, char color);
+    Rect(int x, int y, int a, int b, enum colors color);
     bool draw(char* buffer, Screen& display);
-
+    ostream& operator<<(ostream &os);
 };
 
 
