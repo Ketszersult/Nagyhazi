@@ -57,7 +57,6 @@ int main()
             {
                 cout<<i;
             }
-            //switch case
         }
         if (input == '5')
         {
