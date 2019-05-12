@@ -6,10 +6,6 @@
 using namespace std;
 std::vector<Shape*> shapes;
 
-bool insert(char* buffer, Shape* object, Screen& display){
-    object->draw(buffer, display);
-}
-
 
 int main()
 {
@@ -19,15 +15,17 @@ int main()
     memset(buffer,0,display.get_screensize());
 
     char input = 1;
+    enum colors c;
+    int color;
+    cout << "0-black, 1-blue, 2-green, 3-turkisz, 4-red, 5-pink, 6-brown, 7-light_grey, 8-dark_grey, 9-light_blue, 10-light_green, 11-light_turkisz, 12-light_red, 13-light_pink, 14-yellow, 15-white" << endl;
+
     while (input != '0')
     {
-
-        cout << "0 - kilep\n1 - kepernyo torlese\n2 - negyzet\n3 - kor" << endl;
+        cout << "0 - kilep\n1 - kepernyo torlese\n2 - negyzet\n3 - kor\n4 - objektumok listazasa\n5 - kirajzol" << endl;
         cin >> input;
         if (input == '1')
         {
-            int color;
-            cout << "Milyen szinnel?\n1-tol 15-ig" << endl;
+            cout << "Milyen szinnel?" << endl;
             cin >> color;
             memset(buffer,color,display.get_screensize());
             input = 1;
@@ -36,27 +34,20 @@ int main()
         if (input == '2')
         {
             int x, y, a, b;
-            int color;
-            cout << "Hova? Mekkorat? Milyen szinnel?" << endl;
-            cin >> x;
-            cin >> y;
-            cin >> a;
-            cin >> b;
-            cin >> color;
-            Shape* rectangle = new Rect(x, y, a, b, color);
+            cout << "Hova? Mekkorat? Milyen szinnel(x y a b color)?" << endl;
+            cin >> x >> y >> a >> b >> color;
+            c = (enum colors)color;
+            Shape* rectangle = new Rect(x, y, a, b, c);
             shapes.push_back(rectangle);
             input = 1;
         }
         if (input == '3')
         {
             int x, y, r;
-            int color;
-            cout << "Hova? Mekkora a sugara? Milyen szinnel?" << endl;
-            cin >> x;
-            cin >> y;
-            cin >> r;
-            cin >> color;
-            Shape* circle = new Circle(x, y, r, color);
+            cout << "Hova? Mekkora a sugara? Milyen szinnel(x y r color)?" << endl;
+            cin >> x >> y >> r >> color;
+            c = (enum colors)color;
+            Shape* circle = new Circle(x, y, r, c);
             shapes.push_back(circle);
             input = 1;
         }
@@ -64,12 +55,16 @@ int main()
         {
             for(Shape* i : shapes)
             {
-                i->draw(buffer, display);
+                cout<<i;
             }
-            input = 1;
+            //switch case
         }
         if (input == '5')
         {
+            for(Shape* i : shapes)
+            {
+                i->draw(buffer, display);
+            }
             display.print_out(buffer);
             input = 1;
         }

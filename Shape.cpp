@@ -11,3 +11,7 @@ void put_pixel(int x, int y, int c, char* buffer, Screen& display)
     // now this is about the same as 'fbp[pix_offset] = value'
     *((char *)(buffer + pix_offset)) = c;
 }
+
+char Shape::get_color() {
+    return color;
+}
