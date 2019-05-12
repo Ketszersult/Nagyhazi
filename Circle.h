@@ -10,10 +10,8 @@ class Circle:public Shape
 private:
     int r;
 public:
-    Circle(int u, int v, int r, enum colors c);
+    Circle(int u, int v, int r, char color);
     bool draw(char* buffer, Screen& display);
-    ostream& operator<<(ostream &os);
-    char get_color();
 
 };
 

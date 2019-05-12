@@ -2,7 +2,7 @@
 
 enum shape tc = C;
 
-Circle::Circle(int u, int v, int r, enum colors c) : r(r)
+Circle::Circle(int u, int v, int r, char c) : r(r)
 {
     color = c;
     type=tc;
@@ -28,15 +28,5 @@ bool Circle::draw(char *buffer, Screen &display) {
     cout << "kesz" << endl;
     return true;
 }
-
-ostream& Circle::operator<<(ostream& os) {
-    cout << "Szin: " << this->color << "Kozeppont: " << this->u << "," << this->v << "Sugar: " << this->r << endl;
-    return os;
-}
-
-char Circle::get_color() {
-    return color;
-}
-
 
 

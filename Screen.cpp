@@ -32,11 +32,11 @@ Screen::Screen() {
     if (ioctl(fbfd, FBIOGET_VSCREENINFO, &var_info)) {
         printf("Error reading variable screen info.\n");
     }
-    /*var_info.bits_per_pixel = 8;
+    var_info.bits_per_pixel = 8;
     if (ioctl(fbfd, FBIOPUT_VSCREENINFO, &var_info))
     {
         printf("Error setting variable information.\n");
-    }*/
+    }
 
     printf("Variable info:\n %dx%d, %d bpp\n",
            var_info.xres,
