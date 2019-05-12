@@ -11,11 +11,14 @@ private:
     int r;
 public:
     Circle(int u, int v, int r, enum colors c);
+    ~Circle();
     bool draw(char* buffer, Screen& display);
-    ostream& operator<<(ostream &os);
     int get_u();
     int get_v();
     int get_r();
+    void set_u(int uu);
+    void set_v(int vv);
+    void set_r(int rr);
 
 };
 

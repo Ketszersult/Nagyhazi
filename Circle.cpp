@@ -11,8 +11,9 @@ Circle::Circle(int u, int v, int r, enum colors c) : r(r)
 
 }
 bool Circle::draw(char *buffer, Screen &display) {
-    if(u-r<0 || v-r<0 || u+r>display.get_x() || v+r>display.get_y())
+    if(u-r<0 || v-r<0 || u+r>display.get_x() || v+r>display.get_y())    //a kor poziciojanak ellenorzese
     {
+        cout << "kifut a kepernyorol" << endl;
        return false;
     }
     for (int x = u - r - 1; x < u + r + 1; x++)
@@ -21,7 +22,7 @@ bool Circle::draw(char *buffer, Screen &display) {
         {
             if (pow((x - u), 2) + pow((y - v), 2) <= r * r)
             {
-                put_pixel(x, y, color, buffer, display);
+                put_pixel(x, y, color, buffer, display);        //kirajzolja a kort a kor egyenlet alapjan
             }
         }
     }
@@ -29,16 +30,15 @@ bool Circle::draw(char *buffer, Screen &display) {
     return true;
 }
 
-ostream & operator<<(ostream &os, Circle* obj) {
-    cout << "Szin: " << obj->get_color() << "Kozeppont:" << obj->get_u() << "," << obj->get_v() << "Sugar: " << obj->get_r() << endl;
-    return os;
-}
+//getter, setter fuggvenyek
 
-char Circle::get_color() {
-    return color;
-}
 int Circle::get_r() {return this->r;}
 int Circle::get_u() {return this->u;}
 int Circle::get_v() {return this->v;}
 
+void Circle::set_v(int vv) {this->v = vv;}
+void Circle::set_u(int uu) {this->u = uu;}
+void Circle::set_r(int rr) {this->r = rr;}
+
+Circle::~Circle() {}
 

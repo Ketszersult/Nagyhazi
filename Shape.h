@@ -23,6 +23,7 @@ enum colors {
     yellow,
     white
 };
+
 class Shape{
 protected:
     enum colors color;
@@ -30,18 +31,21 @@ protected:
     int v;
     enum shape type;
 public:
-    Shape();
-    ~Shape();
+    Shape() {};
+    virtual ~Shape() {};
+
     virtual bool draw(char* buffer, Screen& display) = 0;
-    virtual ostream& operator<<(ostream& os) = 0;
     char get_color();
     virtual int get_u() = 0;
     virtual int get_v() = 0;
-    virtual int get_r() = 0;
-    virtual int get_a() = 0;
-    virtual int get_b() = 0;
+    virtual void set_u(int uu) = 0;
+    virtual void set_v(int vv) = 0;
+    enum shape get_type();
 };
 
+ostream &operator<<(ostream &os, Shape* obj);
 void put_pixel(int x, int y, int c, char* buffer, Screen& display);
 
+#include "Rect.h"
+#include "Circle.h"
 #endif //UNTITLED_SHAPE_H

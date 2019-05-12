@@ -12,29 +12,32 @@ Rect::Rect(int x, int y, int a, int b, enum colors c) : a(a), b(b)
 }
 
 bool Rect::draw(char *buffer, Screen& display) {
-    if(u<0 || v<0 || u+a>display.get_x() || v+b>display.get_y())
+    if(u<0 || v<0 || u+a>display.get_x() || v+b>display.get_y())    //pozicio ellenorzese
     {
+        cout << "kifut a kepernyorol" << endl;
         return false;
     }
     for (int i = u; i <= (u + a); i++)
     {
         for (int j = v; j <= (v + b); j++)
         {
-            put_pixel(i, j, color, buffer, display);
+            put_pixel(i, j, color, buffer, display);        //kirajzolja a negyzetet
         }
     }
     cout << "kesz" << endl;
     return true;
 }
 
-
-ostream & operator<<(ostream &os, Rect* obj) {
-    cout << "Szin: " << obj->get_color() << "Bal felso sarok:" << obj->get_u() << "," << obj->get_v() << "a: " << obj->get_a() << "b: " << obj->get_b() << endl;
-    return os;
-}
+//getter, setter fuggvenyek
 
 int Rect::get_a() {return this->a;}
 int Rect::get_b() {return this->b;}
 int Rect::get_u() {return this->u;}
 int Rect::get_v() {return this->v;}
 
+void Rect::set_a(int aa) {this->a = aa;}
+void Rect::set_b(int bb) {this->b = bb;}
+void Rect::set_u(int uu) {this->u = uu;}
+void Rect::set_v(int vv) {this->v = vv;}
+
+Rect::~Rect() {}
