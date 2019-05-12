@@ -34,6 +34,10 @@ public:
     ~Shape();
     virtual bool draw(char* buffer, Screen& display) = 0;
     virtual ostream& operator<<(ostream& os) = 0;
+    virtual char get_color() =0;
+    virtual int get_u() = 0;
+    virtual int get_v() = 0;
+    virtual int get_r() = 0;
 };
 
 void put_pixel(int x, int y, int c, char* buffer, Screen& display);

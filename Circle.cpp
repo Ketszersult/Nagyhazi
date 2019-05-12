@@ -29,9 +29,13 @@ bool Circle::draw(char *buffer, Screen &display) {
     return true;
 }
 
-ostream &Circle::operator<<(Shape* circle) {
+ostream& Circle::operator<<(ostream& os) {
     cout << "Szin: " << this->color << "Kozeppont: " << this->u << "," << this->v << "Sugar: " << this->r << endl;
     return os;
+}
+
+char Circle::get_color() {
+    return color;
 }
 
 

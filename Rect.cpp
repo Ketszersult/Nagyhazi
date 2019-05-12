@@ -27,8 +27,12 @@ bool Rect::draw(char *buffer, Screen& display) {
     return true;
 }
 
-ostream &Rect::operator<<(ostream &os) {
-    cout << "Szin: " << this->color << "Bal felso sarok:" << this->u << "," << this->v << "a: " << this->a << "b: " << this->b << endl;
+char Rect::get_color() {
+    return color;
+}
+
+ostream & operator<<(ostream &os, Shape* obj) {
+    cout << "Szin: " << obj->get_color() << "Bal felso sarok:" << this->u << "," << this->v << "a: " << this->a << "b: " << this->b << endl;
     return os;
 }
 
