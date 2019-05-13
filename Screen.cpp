@@ -10,33 +10,37 @@ int Screen::get_linelength() { return fix_info.line_length; }
 
 long int Screen::get_screensize() { return screensize; }
 
-char* Screen::buffer() { return fbp; }
+char *Screen::buffer() { return fbp; }
 
-void Screen::print_out(char *buffer) {
+void Screen::print_out(char *buffer)
+{
     memcpy(this->fbp, buffer, get_screensize());
 }
 
-void Screen::clear(char c) {
+/*void Screen::clear(char c) {
     memset(this->fbp, c, var_info.xres * var_info.yres);
-}
+}*/
 
-Screen::Screen() {
+Screen::Screen()
+{
     //framebuffer megnyitasa
     fbfd = open("/dev/fb0", O_RDWR);
-    if (fbfd == -1) {
+    if (fbfd == -1)
+    {
         printf("Error: cannot open framebuffer device.\n");
     }
     printf("The framebuffer device opened.\n");
 
     //atallitja a szinmelyseget
-    if (ioctl(fbfd, FBIOGET_VSCREENINFO, &var_info)) {
+    if (ioctl(fbfd, FBIOGET_VSCREENINFO, &var_info))
+    {
         printf("Error reading variable screen info.\n");
     }
-    /*var_info.bits_per_pixel = 8;
+    var_info.bits_per_pixel = 8;
     if (ioctl(fbfd, FBIOPUT_VSCREENINFO, &var_info))
     {
         printf("Error setting variable information.\n");
-    }*/
+    }
 
     printf("Variable info:\n %dx%d, %d bpp\n",
            var_info.xres,
@@ -45,7 +49,8 @@ Screen::Screen() {
 
 
     //keprenyo informacio kiolvasasa
-    if (ioctl(fbfd, FBIOGET_FSCREENINFO, &fix_info)) {
+    if (ioctl(fbfd, FBIOGET_FSCREENINFO, &fix_info))
+    {
         printf("Error reading fixed screen info.\n");
     }
     printf("Fixed info:\n");
@@ -59,7 +64,6 @@ Screen::Screen() {
            fix_info.capabilities);
 
 
-
     screensize = fix_info.smem_len;
     hres = var_info.xres;
     vres = var_info.yres;
@@ -67,26 +71,31 @@ Screen::Screen() {
     //buffer kimappalese a memoriaba
     fbp = (char *) mmap(0, screensize, PROT_READ | PROT_WRITE, MAP_SHARED, fbfd, 0);
 
-    if (*(int*)fbp == -1) {
+    if (*(int *) fbp == -1)
+    {
         printf("Failed to mmap.\n");
     }
 
     //cursor elrejtese
     console_fd = open("/dev/tty0", O_RDWR);
-    if (!console_fd) {
+    if (!console_fd)
+    {
         fprintf(stderr, "Could not open console.\n");
         exit(1);
     }
-    if (ioctl(console_fd, KDSETMODE, KD_GRAPHICS)) {
+    if (ioctl(console_fd, KDSETMODE, KD_GRAPHICS))
+    {
         fprintf(stderr, "Could not set console to KD_GRAPHICS mode.\n");
         exit(1);
     }
     close(console_fd);
 }
 
-Screen::~Screen() {
+Screen::~Screen()
+{
     //cursor visszaallitasa
-    if (kbfd >= 0) {
+    if (kbfd >= 0)
+    {
         ioctl(kbfd, KDSETMODE, KD_TEXT);
     }
     //fajl bezarasa

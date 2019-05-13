@@ -1,5 +1,6 @@
 #ifndef UNTITLED_SCREEN_H
 #define UNTITLED_SCREEN_H
+
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,16 +27,24 @@ private:
     int console_fd;
 public:
     Screen();
-    ~Screen();
-    int get_x();
-    int get_y();
-    int get_depth();
-    int get_linelength();
-    char *buffer();
-    void print_out(char *buffer);
-    void clear(char c);
-    long int get_screensize();
 
+    ~Screen();
+
+    int get_x();
+
+    int get_y();
+
+    int get_depth();
+
+    int get_linelength();
+
+    char *buffer();
+
+    void print_out(char *buffer);
+
+    void clear(char c);
+
+    long int get_screensize();
 
 
 };

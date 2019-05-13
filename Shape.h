@@ -1,10 +1,13 @@
 #ifndef UNTITLED_SHAPE_H
 #define UNTITLED_SHAPE_H
+
 #include "Screen.h"
 
 using namespace std;
 
-enum shape { R, C };
+enum shape {
+    R, C
+};
 enum colors {
     black,
     blue,
@@ -24,7 +27,7 @@ enum colors {
     white
 };
 
-class Shape{
+class Shape {
 protected:
     enum colors color;
     int u;
@@ -32,20 +35,29 @@ protected:
     enum shape type;
 public:
     Shape() {};
+
     virtual ~Shape() {};
 
-    virtual bool draw(char* buffer, Screen& display) = 0;
+    virtual bool draw(char *buffer, Screen &display) = 0;
+
     char get_color();
+
     virtual int get_u() = 0;
+
     virtual int get_v() = 0;
+
     virtual void set_u(int uu) = 0;
+
     virtual void set_v(int vv) = 0;
+
     enum shape get_type();
 };
 
-ostream &operator<<(ostream &os, Shape* obj);
-void put_pixel(int x, int y, int c, char* buffer, Screen& display);
+ostream &operator<<(ostream &os, Shape *obj);
+
+void put_pixel(int x, int y, int c, char *buffer, Screen &display);
 
 #include "Rect.h"
 #include "Circle.h"
+
 #endif //UNTITLED_SHAPE_H
