@@ -29,6 +29,7 @@ public:
     void set_a(int aa);
 
     void set_b(int bb);
+    void print();
 };
 
 

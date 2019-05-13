@@ -32,7 +32,6 @@ protected:
     enum colors color;
     int u;
     int v;
-    enum shape type;
 public:
     Shape() {};
 
@@ -50,7 +49,8 @@ public:
 
     virtual void set_v(int vv) = 0;
 
-    enum shape get_type();
+    virtual void print() = 0;
+
 };
 
 ostream &operator<<(ostream &os, Shape *obj);

@@ -1,11 +1,9 @@
 #include "Circle.h"
 
-enum shape tc = C;
 
 Circle::Circle(int u, int v, int r, enum colors c) : r(r)
 {
     color = c;
-    type = tc;
     Shape::u = u;
     Shape::v = v;
 
@@ -48,4 +46,10 @@ void Circle::set_u(int uu) { this->u = uu; }
 void Circle::set_r(int rr) { this->r = rr; }
 
 Circle::~Circle() {}
+
+void Circle::print()
+{
+    cout << "Szin: " << (int)get_color() << " Kozeppont(u,v):" << get_u() << "," << get_v()
+         << " Sugar: " << get_r();
+}
 

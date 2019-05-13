@@ -25,6 +25,7 @@ public:
     void set_v(int vv);
 
     void set_r(int rr);
+    void print();
 
 };
 

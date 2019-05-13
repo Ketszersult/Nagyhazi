@@ -1,11 +1,9 @@
 #include "Rect.h"
 
-enum shape tr = R;
 
 Rect::Rect(int x, int y, int a, int b, enum colors c) : a(a), b(b)
 {
     color = c;
-    type = tr;
     u = x;
     v = y;
 
@@ -29,6 +27,12 @@ bool Rect::draw(char *buffer, Screen &display)
     return true;
 }
 
+void Rect::print()
+{
+    cout << "Szin: " << (int)get_color() << " Bal felso sarok(u,v):" << get_u() << "," << get_v()
+         << " a: " << get_a() << " b: " << get_b();
+}
+
 //getter, setter fuggvenyek
 
 int Rect::get_a() { return this->a; }
@@ -48,3 +52,5 @@ void Rect::set_u(int uu) { this->u = uu; }
 void Rect::set_v(int vv) { this->v = vv; }
 
 Rect::~Rect() {}
+
+
